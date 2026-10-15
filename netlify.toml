@@ -1,0 +1,22 @@
+# موقع ثابت (ملف HTML واحد) — لا يحتاج أمر بناء
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# أي رابط غير موجود يرجع للصفحة الرئيسية
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
